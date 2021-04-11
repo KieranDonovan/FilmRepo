@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link  rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<header th:insert="fragments :: heading"></header>
+	<main>
+	<div class="centre-screen">
+		<!-- <h1>Email: <span th:text="${email}">DEFAULT TEXT</span></h1> -->
+		<h2>
+			<span th:text="#{index.welcome}"></span><span th:text="${name}">DEFAULT TEXT</span>
+		</h2>
+		<h2>
+			<span th:text="#{index.directors}"></span><a href="/directors">See directors table</a>
+		</h2> 
+		<!-- <h2> Directors Archive: <a href="/directors">See directors table</a></h2>  -->
+		</div>
+	</main>
+	<footer th:insert="fragments :: languages"></footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link  rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<header th:insert="fragments :: heading"></header>
+	<main>
+		<div class="centre-screen">
+			<!-- <table>
+				<tr>
+					<th>ID</th>
+					<th>Director</th>
+				</tr>
+				
+				<tr th:each = "director: ${directors}" th:object= "${director}">
+					<td th:text="*{directorId}">ID</td>
+					<td th:text="*{directorName}">Director</td>
+				</tr>
+			</table>  -->
+			<!-- <table>  
+				<tr>
+					<th>ID</th>
+					<th>Director</th>
+				</tr>
+				
+				<tr th:each ="director,iterationCount : ${directors}" th:class="${iterationCount.odd}? 'odd'" th:object= "${director}">
+					<td th:text="*{directorId}">ID</td>
+					<td th:text="*{directorName}">Director</td>
+				</tr>
+			</table> -->
+			<table>
+				<tr>
+					<th>
+					<span th:text="#{director.id}"></span>
+					</th>
+					<th>
+					<span th:text="#{director.name}"></span>
+					</th>
+				</tr>
+				
+				<tr th:each ="director,iterationCount : ${directors}" th:class="${iterationCount.odd}? 'odd'" th:object= "${director}">
+					<td th:text="*{directorId}">ID</td>
+					<td> <a th:text="*{directorName}" th:href="'/filmsbydirector/' + *{directorId}">Director</a></td>
+				</tr>
+			</table>
+		</div>
+	</main>
+	<footer th:insert="fragments :: languages"></footer>
+</body>

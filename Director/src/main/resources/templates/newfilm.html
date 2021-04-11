@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link  rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<header th:insert="fragments :: heading"></header>
+	<main>
+		<div class="centre-screen">
+			<form method="post" th:action="@{/newfilm}" th:object="${newFilmForm}">
+				<label for="filmName" th:text="#{newfilm.newFilmName}"></label>
+				<input id="filmName" type="text" th:field="*{newFilmName}">
+				
+				<div th:if="${#fields.hasErrors('newFilmName')}" class="error" th:errors="*{newFilmName}"></div>
+				
+				<span th:if="${duplicateFilm}" class="error">
+					<span th:text="${duplicateFilm}"></span><span th:text = "${duplicateDirector}"></span> <span th:text="#{newdirector.alreadyexists}"></span>
+				</span>
+				
+				<br>
+				
+				<label for="director" th:text="#{newFilm.chooseDirector}"></label>
+				<select th:field="*{directorId}">
+					<option th:each="director: ${directors}" th:text="${director.directorName}" th:value="${director.directorId}"/>
+				</select>
+				<br>
+				<input type="submit" th:value="#{newFilm.addFilm}"/>
+			</form>
+		</div>
+	</main>
+</body>
+</html>

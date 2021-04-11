@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link  rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<main>
+		<div class="centre-screen">
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>Director</th>
+				</tr>
+				<tr th:object = "${director}">
+					<td th:text="*{directorId}">ID</td>
+					<td th:text="*{directorName}">Director</td>
+				</tr>
+			</table>
+		</div>
+	</main>
+	<footer th:insert="fragments :: languages"></footer>
+</body>
+</html>

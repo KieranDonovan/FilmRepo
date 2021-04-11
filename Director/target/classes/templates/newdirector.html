@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link  rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<header th:insert="fragments :: heading"></header>
+	<main>
+		<div class="centre-screen">
+		<form method="post" th:action="@{/newdirector}" th:object="${newDirectorForm}">
+			<label for="directorName" th:text="#{newdirector.directorName}"></label>
+			<input type="text" th:field="*{newDirectorName}"/>
+			<div th:if="${duplicateDirectorName}"> class="error">
+				<span th:text="${duplicateDirectorName}"></span><span th:text="#newdirector.alreadyexists}"></span>
+			</div>
+			<div th:if="${#fields.hasErrors('newDirectorName')}" class="error" th:errors="*{newDirectorName}"></div>
+			<br><input type="submit" th:value="#{submit}"/>
+		</form>
+		</div>
+	</main>
+	<footer th:insert="fragments :: languages"></footer>
+</body>
+</html>

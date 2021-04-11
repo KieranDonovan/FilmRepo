@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link  rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<header th:insert="fragments :: heading"></header>
+	<main>
+		<div class="centre-screen">
+		<form method="post" th:action="@{/login}">
+			<label for="username" th:text="#{login.username}">Username</label>
+			<input type="text" th:field="username"/>
+			<br>
+			<label for="password" th:text="#{login.password}">Password</label>
+			<input type="password" th:field="password"/>
+			<br>
+			<input type="submit" th:value="#{submit}"/>
+		</form>	
+		</div>
+	</main>
+	<footer th:insert="fragments :: languages"></footer>
+</body>
+</html>

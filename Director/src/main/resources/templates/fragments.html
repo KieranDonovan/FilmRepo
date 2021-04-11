@@ -1,0 +1,19 @@
+<div th:fragment="heading">
+  <h1 th:text="#{heading.welcome}"></h1>
+  <nav>
+   <a th:text = "#{fragments.home}" th:href="@{/}">Home</a>
+   <a th:text = "#{fragments.directors}" th:href="@{directors}">Directors</a>  
+   <a th:href="@{/newdirector}" th:text="#{fragments.newdirector}">New director</a>
+   <a th:href="@{/newfilm}" th:text="#{fragments.newfilm}">New film</a>
+  </nav>
+</div>
+
+<div th:fragment="languages">
+  <footer th:with="currentUrl=(${@thymeleafBeans.removeLangFromUrl()})">
+   		<a th:href="@{${currentUrl}(lang=ie)}">English</a>
+   		<a th:href="@{${currentUrl}(lang=fr)}">French</a>
+	</div>
+   <br>
+   <span>&copy; Kieran Donovan</span> 
+ </footer>
+</div>
